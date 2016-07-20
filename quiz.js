@@ -76,16 +76,6 @@
 
 
 
-// function someFunc(arg) {
-//     alert(arg.foo);
-//     alert(arg.bar);
-// }
-
-// someFunc({foo: "This", bar: "works!"});
-
-
-
-
   // This is my tree function. It accepts one object as an argument. That object is build /
 
 function tree(build) {
@@ -96,25 +86,43 @@ function tree(build) {
     userChar: " ",
   };
 
-  var bestHope = document.getElementById("height").value;
-  var secondHope = document.getElementById("character").value;
+  build.myHeight = document.getElementById("height").value;
+   build.userChar = document.getElementById("character").value;
 
-  build.myHeight = bestHope;
-  build.userChar = secondHope;
 
   var button = document.getElementById("button");
   var goTreeGo = "";
 
-  for (var i = 0; i <= build.myHeight; i+=2)
+  for (var i = 0; i <= build.myHeight; i++)
+
   if (document.getElementById("height").value !== "" && document.getElementById("character") !== "") {
-    goTreeGo += " " + build.userChar[i] + " ";
+    goTreeGo += build.userChar;
     console.log(goTreeGo);
 
   } else if (document.getElementById("height").value === "" && document.getElementById("character").value === "") {
     alert("Both fields must have a value!");
-  } else {
+  } else if (document.getElementById("height").value === "") {
     alert("Still one field is empty!");
+  } else if (document.getElementById("character").value === "") {
+    alert("Still one field is empty!");
+  } else {
+    alert("Something is wrong.");
   }
-}
+};
 
-button.onclick = tree;
+button.addEventListener("click", tree);
+
+document.getElementById("height").addEventListener("keyup", function(event) {
+    event.preventDefault();
+    if (event.keyCode == 13) {
+        document.getElementById("button").click();
+    }
+});
+
+
+document.getElementById("character").addEventListener("keyup", function(event) {
+    event.preventDefault();
+    if (event.keyCode == 13) {
+        document.getElementById("button").click();
+    }
+});
