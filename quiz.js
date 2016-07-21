@@ -76,6 +76,16 @@
 
 
 
+// function someFunc(arg) {
+//     alert(arg.foo);
+//     alert(arg.bar);
+// }
+
+// someFunc({foo: "This", bar: "works!"});
+
+
+
+
   // This is my tree function. It accepts one object as an argument. That object is build /
 
 function tree(build) {
@@ -86,28 +96,26 @@ function tree(build) {
     userChar: " ",
   };
 
-  build.myHeight = document.getElementById("height").value;
-   build.userChar = document.getElementById("character").value;
 
+  build.myHeight = document.getElementById("height").value;
+  build.userChar = document.getElementById("character").value;
 
   var button = document.getElementById("button");
-  var goTreeGo = "";
+  var counter = 1;
 
   for (var i = 0; i <= build.myHeight; i++)
-
   if (document.getElementById("height").value !== "" && document.getElementById("character") !== "") {
-    goTreeGo += build.userChar;
-    console.log(goTreeGo);
-
-  } else if (document.getElementById("height").value === "" && document.getElementById("character").value === "") {
-    alert("Both fields must have a value!");
-  } else if (document.getElementById("height").value === "") {
-    alert("Still one field is empty!");
-  } else if (document.getElementById("character").value === "") {
-    alert("Still one field is empty!");
-  } else {
-    alert("Something is wrong.");
+    console.log(" ".repeat(build.myHeight-i) + build.userChar.repeat(counter))
+    counter += 2;
   }
+
+  if (document.getElementById("height").value === "" ) {
+    alert("Still one field is empty!");
+    }
+  if (document.getElementById("character").value === "") {
+    alert("Still one field is empty!");
+   }
+
 };
 
 button.addEventListener("click", tree);
